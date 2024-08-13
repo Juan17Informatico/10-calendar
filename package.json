@@ -15,10 +15,12 @@
     "match-sorter": "^6.3.4",
     "react": "^18.2.0",
     "react-big-calendar": "^1.13.2",
+    "react-datepicker": "^7.3.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.26.0",
-    "sort-by": "^0.0.2"
+    "sort-by": "^0.0.2",
+    "sweetalert2": "^11.6.13"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
