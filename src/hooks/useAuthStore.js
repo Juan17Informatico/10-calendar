@@ -51,13 +51,41 @@ export const useAuthStore = () => {
 
     }
 
+    const checkAuthToken = async() => {
+        
+        const token = localStorage.getItem('token');
+
+        if(!token) return dispatch(onLogout());
+
+        try {
+            const { data } = await calendarApi.get('/auth/renew');
+            localStorage.setItem('token-init-date', new Date().getTime() );            
+            localStorage.setItem('token', data.token);
+            dispatch( onLogin({ name: data.name, uid: data.uid }) );
+        } catch (error) {
+            localStorage.clear();
+            dispatch( onLogout() );
+        }
+
+    }
+
+    const startLogout = () => {
+
+        localStorage.clear();
+
+        dispatch( onLogout() );
+
+    }
+
     return {
         //* Propiedades
+        errorMessage,
         status, 
         user, 
-        errorMessage,
         //* Metodos
+        checkAuthToken,
         startLogin,
+        startLogout,
         startRegister,
     }
 
